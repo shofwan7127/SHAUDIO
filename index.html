@@ -1,0 +1,3683 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SH Store - Generator Nota Joki Fish It PRO</title>
+    
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ============================================== */
+        /* VARIABEL & RESET - FUTURISTIK PREMIUM          */
+        /* ============================================== */
+        :root {
+            --bg-dark: #0a0a12;
+            --bg-surface: #111122;
+            --bg-card: #1a1a2e;
+            --text-light: #f5f7ff;
+            --text-secondary: #b0b5d3;
+            --accent-cyan: #00f7ff;
+            --accent-cyan-glow: #00f7ff;
+            --accent-purple: #8a5cf5;
+            --accent-blue: #5d7cff;
+            --accent-pink: #ff2a9c;
+            --accent-gold: #ffd600;
+            --radius-large: 28px;
+            --radius-medium: 18px;
+            --radius-small: 12px;
+            --shadow-glow: 0 0 40px rgba(0, 247, 255, 0.4);
+            --shadow-card: 0 16px 50px rgba(0, 0, 0, 0.5);
+            --gradient-primary: linear-gradient(135deg, #00f7ff 0%, #8a5cf5 50%, #5d7cff 100%);
+            --gradient-dark: linear-gradient(135deg, #111122 0%, #1a1a2e 100%);
+            --gradient-gold: linear-gradient(135deg, #ffd600 0%, #ffaa00 100%);
+            --gradient-pink: linear-gradient(135deg, #ff2a9c 0%, #ff5d8f 100%);
+            --border-glow: 1px solid rgba(0, 247, 255, 0.3);
+            --transition-smooth: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Background efek futuristik dengan partikel */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(0, 247, 255, 0.15);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(-10px); }
+            75% { transform: translateY(20px) translateX(15px); }
+        }
+
+        /* Garis grid neural network */
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 247, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 247, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
+            pointer-events: none;
+            opacity: 0.2;
+            animation: gridMove 100s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        /* Scanline effect */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 247, 255, 0.8),
+                transparent);
+            z-index: 10000;
+            pointer-events: none;
+            animation: scan 4s linear infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+        /* Glow orb di background */
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-cyan);
+            top: 10%;
+            left: 10%;
+            animation: pulseOrb 8s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-purple);
+            bottom: 10%;
+            right: 10%;
+            animation: pulseOrb 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulseOrb {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.2); opacity: 0.15; }
+        }
+
+        /* ============================================== */
+        /* TOMBOL KEMBALI FIXED - HOLOGRAFIK              */
+        /* ============================================== */
+        .fixed-home-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 9999;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.7);
+            border: 2px solid rgba(0, 247, 255, 0.4);
+            color: var(--accent-cyan);
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-bounce);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                inset 0 0 20px rgba(0, 247, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            animation: holographicGlow 3s infinite alternate;
+        }
+
+        @keyframes holographicGlow {
+            0% { 
+                box-shadow: 
+                    0 10px 30px rgba(0, 0, 0, 0.4),
+                    inset 0 0 20px rgba(0, 247, 255, 0.1),
+                    0 0 30px rgba(0, 247, 255, 0.3);
+            }
+            100% { 
+                box-shadow: 
+                    0 10px 30px rgba(0, 0, 0, 0.4),
+                    inset 0 0 20px rgba(0, 247, 255, 0.2),
+                    0 0 50px rgba(0, 247, 255, 0.5);
+            }
+        }
+
+        .fixed-home-btn:hover {
+            transform: scale(1.2) rotate(180deg);
+            background: rgba(0, 247, 255, 0.2);
+            color: #fff;
+            border-color: var(--accent-cyan);
+            animation: none;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .fixed-home-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* ============================================== */
+        /* MAIN CONTAINER & HEADER - CYBERPUNK            */
+        /* ============================================== */
+        .main-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 50px 40px;
+            background: rgba(26, 26, 46, 0.4);
+            border-radius: var(--radius-large);
+            border: 2px solid rgba(0, 247, 255, 0.2);
+            box-shadow: 
+                var(--shadow-card),
+                inset 0 0 60px rgba(0, 247, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            animation: shimmerHeader 3s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        @keyframes shimmerHeader {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 247, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(138, 92, 245, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .logo {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 30px rgba(0, 247, 255, 0.3);
+            animation: textGlow 2s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 20px rgba(0, 247, 255, 0.3); }
+            100% { text-shadow: 0 0 40px rgba(0, 247, 255, 0.6); }
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+            animation: linePulse 2s infinite;
+        }
+
+        @keyframes linePulse {
+            0%, 100% { width: 200px; opacity: 1; }
+            50% { width: 250px; opacity: 0.7; }
+        }
+
+        .subtitle {
+            font-size: 1.6rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        .subtitle::before, .subtitle::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            animation: spin 4s linear infinite;
+        }
+
+        .subtitle::before { left: -30px; }
+        .subtitle::after { right: -30px; }
+
+        @keyframes spin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .description {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ============================================== */
+        /* BUTTON STYLES - NEON CYBER                     */
+        /* ============================================== */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+
+        .btn-futuristic {
+            padding: 28px 40px;
+            border: none;
+            border-radius: var(--radius-medium);
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1.2px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            text-transform: uppercase;
+            min-height: 100px;
+            z-index: 1;
+        }
+
+        .btn-futuristic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
+            transition: 0.8s;
+            z-index: -1;
+        }
+
+        .btn-futuristic:hover::before {
+            left: 100%;
+        }
+
+        .btn-futuristic::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-medium);
+            padding: 2px;
+            background: var(--gradient-primary);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-futuristic:hover::after {
+            opacity: 1;
+        }
+
+        .btn-futuristic:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-futuristic:active {
+            transform: translateY(-3px) scale(0.98);
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: #000;
+            font-weight: 800;
+            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            border: 2px solid rgba(0, 247, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-danger {
+            background: var(--gradient-pink);
+            color: white;
+            font-weight: 800;
+            box-shadow: 0 10px 30px rgba(255, 42, 156, 0.3);
+        }
+
+        .btn-icon {
+            font-size: 2rem;
+        }
+
+        /* ============================================== */
+        /* MODAL STYLES - HOLOGRAPHIC                     */
+        /* ============================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+        }
+
+        .modal-content {
+            background: rgba(26, 26, 46, 0.8);
+            width: 100%;
+            max-width: 900px;
+            border-radius: var(--radius-large);
+            border: 2px solid rgba(0, 247, 255, 0.3);
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.7),
+                inset 0 0 80px rgba(0, 247, 255, 0.05);
+            overflow: hidden;
+            transform: scale(0.9) translateY(50px);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                       opacity 0.6s ease-out;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 35px 40px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid rgba(0, 247, 255, 0.2);
+            position: relative;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            animation: shimmerHeader 3s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .modal-body {
+            padding: 40px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        /* Tombol di Modal */
+        .modal-actions {
+            position: sticky;
+            bottom: 0;
+            background: linear-gradient(to top, 
+                rgba(26, 26, 46, 0.95) 0%, 
+                rgba(26, 26, 46, 0.7) 100%);
+            padding: 30px 40px;
+            border-top: 2px solid rgba(0, 247, 255, 0.2);
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            z-index: 10;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* ============================================== */
+        /* FORM STYLES - CYBER INPUT                      */
+        /* ============================================== */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 15px;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding-left: 15px;
+            text-transform: uppercase;
+        }
+
+        .form-label::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 20px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 247, 255, 0.2);
+            border-radius: var(--radius-small);
+            color: var(--text-light);
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 4px rgba(0, 247, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .form-input:read-only {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            cursor: not-allowed;
+        }
+
+        select.form-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f7ff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 25px center;
+            background-size: 24px;
+            padding-right: 60px;
+        }
+
+        /* ============================================== */
+        /* HISTORY CARD STYLES - DATA GRID                */
+        /* ============================================== */
+        .history-controls {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 20px 70px 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 247, 255, 0.2);
+            border-radius: var(--radius-medium);
+            color: var(--text-light);
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 4px rgba(0, 247, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .filter-btn {
+            padding: 15px 28px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 247, 255, 0.2);
+            border-radius: var(--radius-small);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            min-width: 100px;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        .filter-btn:hover {
+            background: rgba(0, 247, 255, 0.15);
+            color: var(--accent-cyan);
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .filter-btn.active {
+            background: rgba(0, 247, 255, 0.2);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: 0 10px 25px rgba(0, 247, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Grid untuk Card History */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+
+        /* Card History Holographic */
+        .history-card {
+            background: rgba(26, 26, 46, 0.6);
+            border-radius: var(--radius-medium);
+            border: 2px solid rgba(0, 247, 255, 0.15);
+            padding: 35px;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .history-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .history-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: var(--shadow-glow);
+            border-color: rgba(0, 247, 255, 0.4);
+        }
+
+        .history-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Status warna untuk card */
+        .history-card.status-Success::before {
+            background: linear-gradient(to bottom, #00ff88, #00cc66);
+        }
+        .history-card.status-Proccess::before {
+            background: var(--gradient-primary);
+        }
+        .history-card.status-Pending::before {
+            background: linear-gradient(to bottom, #ffd600, #ffaa00);
+        }
+        .history-card.status-Failed::before {
+            background: linear-gradient(to bottom, #ff2a9c, #ff5d8f);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .card-invoice {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            letter-spacing: 1.5px;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+
+        .card-status {
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid;
+        }
+
+        .status-Success .card-status { 
+            background: rgba(0, 255, 136, 0.15); 
+            color: #00ff88; 
+            border-color: rgba(0, 255, 136, 0.4);
+        }
+        .status-Proccess .card-status { 
+            background: rgba(0, 247, 255, 0.15); 
+            color: var(--accent-cyan); 
+            border-color: rgba(0, 247, 255, 0.4);
+        }
+        .status-Pending .card-status { 
+            background: rgba(255, 214, 0, 0.15); 
+            color: #ffd600; 
+            border-color: rgba(255, 214, 0, 0.4);
+        }
+        .status-Failed .card-status { 
+            background: rgba(255, 42, 156, 0.15); 
+            color: #ff2a9c; 
+            border-color: rgba(255, 42, 156, 0.4);
+        }
+
+        .card-content {
+            margin-bottom: 35px;
+        }
+
+        .card-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .card-row::before {
+            content: '•';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-cyan);
+            opacity: 0.5;
+        }
+
+        .card-row:last-child {
+            border-bottom: none;
+        }
+
+        .card-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .card-value {
+            color: var(--text-light);
+            font-weight: 600;
+            text-align: right;
+            flex: 1;
+            word-break: break-word;
+        }
+
+        /* Style untuk estimasi waktu di card history */
+        .estimated-time-display {
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(0, 247, 255, 0.1);
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .estimated-time-warning {
+            color: #ffd600 !important;
+            background: rgba(255, 214, 0, 0.15) !important;
+            animation: pulseWarning 1.5s infinite alternate;
+        }
+        
+        .estimated-time-paused {
+            color: #ff2a9c !important;
+            background: rgba(255, 42, 156, 0.15) !important;
+        }
+        
+        .estimated-time-completed {
+            color: #00ff88 !important;
+            background: rgba(0, 255, 136, 0.15) !important;
+        }
+        
+        @keyframes pulseWarning {
+            0% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .card-countdown {
+            margin: 25px 0;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-small);
+            border: 2px solid rgba(0, 247, 255, 0.2);
+            text-align: center;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-countdown::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            animation: shimmerHeader 3s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        .countdown-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-cyan);
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+        }
+
+        .countdown-text.paused {
+            color: #ffd600;
+            text-shadow: 0 0 15px rgba(255, 214, 0, 0.5);
+        }
+
+        .countdown-text.time-over {
+            color: #ff2a9c;
+            text-shadow: 0 0 15px rgba(255, 42, 156, 0.5);
+        }
+
+        .card-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .card-btn {
+            padding: 15px;
+            border: none;
+            border-radius: var(--radius-small);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 50px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .card-btn:hover::before {
+            left: 100%;
+        }
+
+        .card-btn:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-btn.view {
+            background: rgba(0, 247, 255, 0.15);
+            color: var(--accent-cyan);
+            border: 2px solid rgba(0, 247, 255, 0.3);
+        }
+
+        .card-btn.edit {
+            background: rgba(93, 124, 255, 0.15);
+            color: var(--accent-blue);
+            border: 2px solid rgba(93, 124, 255, 0.3);
+        }
+
+        .card-btn.action {
+            background: rgba(255, 214, 0, 0.15);
+            color: #ffd600;
+            border: 2px solid rgba(255, 214, 0, 0.3);
+        }
+
+        .card-btn.success {
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .card-btn.delete {
+            background: rgba(255, 42, 156, 0.15);
+            color: #ff2a9c;
+            border: 2px solid rgba(255, 42, 156, 0.3);
+        }
+
+        .card-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Empty State */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 100px 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-medium);
+            border: 3px dashed rgba(0, 247, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .empty-state::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            animation: shimmerHeader 3s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        .empty-icon {
+            font-size: 6rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            opacity: 0.5;
+            animation: floatIcon 4s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            75% { transform: translateY(10px) rotate(-5deg); }
+        }
+
+        .empty-title {
+            font-size: 2.2rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .empty-text {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* ============================================== */
+        /* RECEIPT STYLES - HOLO DISPLAY                  */
+        /* ============================================== */
+        .receipt-container {
+            background: rgba(10, 10, 20, 0.8);
+            border-radius: var(--radius-medium);
+            overflow: hidden;
+            border: 3px solid rgba(0, 247, 255, 0.3);
+            box-shadow: 
+                var(--shadow-glow),
+                inset 0 0 50px rgba(0, 247, 255, 0.05);
+            margin-bottom: 30px;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+        }
+
+        .receipt-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(0, 247, 255, 0.02) 50%, transparent 70%);
+            animation: holoShimmer 5s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes holoShimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* HEADER NOTA - CYBER */
+        .receipt-header {
+            padding: 35px;
+            text-align: center;
+            background: linear-gradient(135deg, 
+                rgba(0, 247, 255, 0.15) 0%, 
+                rgba(138, 92, 245, 0.15) 100%);
+            border-bottom: 3px solid rgba(0, 247, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .receipt-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            animation: shimmerHeader 3s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        /* JUDUL SH STORE */
+        .receipt-logo {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-cyan) !important;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-shadow: 
+                0 0 20px rgba(0, 247, 255, 0.7),
+                0 0 40px rgba(0, 247, 255, 0.4);
+            -webkit-text-fill-color: var(--accent-cyan) !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            animation: logoPulse 2s infinite alternate;
+        }
+
+        @keyframes logoPulse {
+            0% { 
+                text-shadow: 
+                    0 0 20px rgba(0, 247, 255, 0.7),
+                    0 0 40px rgba(0, 247, 255, 0.4);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 30px rgba(0, 247, 255, 0.9),
+                    0 0 60px rgba(0, 247, 255, 0.6);
+            }
+        }
+
+        .receipt-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+            animation: linePulse 2s infinite;
+        }
+
+        .receipt-title {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .receipt-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+        }
+
+        .receipt-body {
+            padding: 35px;
+        }
+
+        /* Grid untuk informasi nota */
+        .receipt-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .receipt-info-group {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-small);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .receipt-info-group::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 247, 255, 0.1), transparent);
+            transition: 0.6s;
+        }
+
+        .receipt-info-group:hover::before {
+            left: 100%;
+        }
+
+        .receipt-info-group:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 247, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .receipt-info-label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .receipt-info-value {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+            word-break: break-word;
+            line-height: 1.5;
+        }
+
+        .receipt-info-value.highlight {
+            color: var(--accent-cyan);
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+
+        .receipt-info-value.invoice {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        /* Section untuk status dan pembayaran */
+        .receipt-status-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-small);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .receipt-status-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            animation: shimmerHeader 3s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        .status-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .status-label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            min-width: 160px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .status-badge:hover::before {
+            left: 100%;
+        }
+
+        .status-success { 
+            background: rgba(0, 255, 136, 0.15); 
+            color: #00ff88; 
+            border-color: rgba(0, 255, 136, 0.4); 
+        }
+        .status-proccess { 
+            background: rgba(0, 247, 255, 0.15); 
+            color: var(--accent-cyan); 
+            border-color: rgba(0, 247, 255, 0.4); 
+        }
+        .status-pending { 
+            background: rgba(255, 214, 0, 0.15); 
+            color: #ffd600; 
+            border-color: rgba(255, 214, 0, 0.4); 
+        }
+        .status-failed { 
+            background: rgba(255, 42, 156, 0.15); 
+            color: #ff2a9c; 
+            border-color: rgba(255, 42, 156, 0.4); 
+        }
+        .status-paid { 
+            background: rgba(0, 247, 255, 0.15); 
+            color: var(--accent-cyan); 
+            border-color: rgba(0, 247, 255, 0.4); 
+        }
+        .status-unpaid { 
+            background: rgba(255, 42, 156, 0.15); 
+            color: #ff2a9c; 
+            border-color: rgba(255, 42, 156, 0.4); 
+        }
+
+        /* Countdown */
+        .receipt-countdown-section {
+            margin: 30px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-small);
+            border: 2px solid rgba(0, 247, 255, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .receipt-countdown-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            animation: shimmerHeader 3s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        .countdown-label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .countdown-timer {
+            font-size: 2.2rem;
+            font-weight: 900;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-cyan);
+            letter-spacing: 3px;
+            text-shadow: 
+                0 0 15px rgba(0, 247, 255, 0.7),
+                0 0 30px rgba(0, 247, 255, 0.4);
+            animation: timerPulse 1.5s infinite alternate;
+        }
+
+        @keyframes timerPulse {
+            0% { 
+                text-shadow: 
+                    0 0 15px rgba(0, 247, 255, 0.7),
+                    0 0 30px rgba(0, 247, 255, 0.4);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 25px rgba(0, 247, 255, 0.9),
+                    0 0 50px rgba(0, 247, 255, 0.6);
+            }
+        }
+
+        .countdown-timer.time-over {
+            color: #ff2a9c;
+            animation: timerPulseRed 1.5s infinite alternate;
+        }
+
+        @keyframes timerPulseRed {
+            0% { 
+                text-shadow: 
+                    0 0 15px rgba(255, 42, 156, 0.7),
+                    0 0 30px rgba(255, 42, 156, 0.4);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 25px rgba(255, 42, 156, 0.9),
+                    0 0 50px rgba(255, 42, 156, 0.6);
+            }
+        }
+
+        .countdown-timer.paused {
+            color: #ffd600;
+            animation: timerPulseYellow 1.5s infinite alternate;
+        }
+
+        @keyframes timerPulseYellow {
+            0% { 
+                text-shadow: 
+                    0 0 15px rgba(255, 214, 0, 0.7),
+                    0 0 30px rgba(255, 214, 0, 0.4);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 25px rgba(255, 214, 0, 0.9),
+                    0 0 50px rgba(255, 214, 0, 0.6);
+            }
+        }
+
+        /* Pesan transaksi */
+        .receipt-message-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(0, 247, 255, 0.08);
+            border-radius: var(--radius-small);
+            border: 2px solid rgba(0, 247, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .receipt-message-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            animation: shimmerHeader 3s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        .message-label {
+            display: block;
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .message-content {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        /* Divider untuk pemisah */
+        .receipt-divider {
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 247, 255, 0.5),
+                transparent);
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .receipt-divider::before {
+            content: '⚡';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+            background: var(--bg-dark);
+            padding: 0 15px;
+        }
+
+        /* Tombol copy di nota */
+        .copy-btn-small {
+            background: transparent;
+            border: 2px solid rgba(0, 247, 255, 0.4);
+            color: var(--accent-cyan);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copy-btn-small::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .copy-btn-small:hover::before {
+            left: 100%;
+        }
+
+        .copy-btn-small:hover {
+            background: rgba(0, 247, 255, 0.15);
+            transform: scale(1.2) rotate(180deg);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
+        }
+
+        /* ============================================== */
+        /* RESPONSIVE STYLES                              */
+        /* ============================================== */
+        @media (max-width: 1200px) {
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .logo {
+                font-size: 3.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .button-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+            
+            .receipt-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .receipt-status-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .history-controls {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .filter-buttons {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 15px;
+            }
+            
+            .card-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 40px 25px;
+                margin-bottom: 50px;
+            }
+            
+            .logo {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .description {
+                font-size: 1.1rem;
+            }
+            
+            .btn-futuristic {
+                padding: 25px 30px;
+                min-height: 90px;
+                font-size: 1.2rem;
+            }
+            
+            .btn-icon {
+                font-size: 1.8rem;
+            }
+            
+            .fixed-home-btn {
+                bottom: 25px;
+                right: 25px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+
+            .modal-content {
+                max-height: 85vh;
+            }
+            
+            .modal-body {
+                padding: 30px;
+            }
+            
+            .modal-header {
+                padding: 30px;
+            }
+            
+            .modal-title {
+                font-size: 1.9rem;
+            }
+            
+            .modal-actions {
+                padding: 25px 30px;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .form-input {
+                padding: 18px 22px;
+            }
+            
+            .receipt-header {
+                padding: 30px;
+            }
+            
+            .receipt-logo {
+                font-size: 2.5rem;
+            }
+            
+            .receipt-title {
+                font-size: 1.3rem;
+            }
+            
+            .receipt-body {
+                padding: 30px;
+            }
+            
+            .countdown-timer {
+                font-size: 1.9rem;
+            }
+            
+            .status-badge {
+                padding: 12px 25px;
+                min-width: 140px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+            }
+            
+            .button-grid {
+                gap: 20px;
+            }
+            
+            .btn-futuristic {
+                padding: 22px 25px;
+                min-height: 80px;
+                font-size: 1.1rem;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn-icon {
+                font-size: 1.6rem;
+            }
+            
+            .fixed-home-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .history-card {
+                padding: 25px;
+            }
+            
+            .card-actions {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-btn {
+                width: 100%;
+            }
+            
+            .modal-body {
+                padding: 25px;
+            }
+            
+            .modal-header {
+                padding: 25px;
+            }
+            
+            .modal-title {
+                font-size: 1.7rem;
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .receipt-header {
+                padding: 25px;
+            }
+            
+            .receipt-logo {
+                font-size: 2.2rem;
+            }
+            
+            .receipt-body {
+                padding: 25px;
+            }
+            
+            .countdown-timer {
+                font-size: 1.7rem;
+                letter-spacing: 2px;
+            }
+            
+            .receipt-info-group {
+                padding: 18px;
+            }
+            
+            .empty-state {
+                padding: 60px 25px;
+            }
+            
+            .empty-icon {
+                font-size: 4rem;
+            }
+            
+            .empty-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .description {
+                font-size: 0.95rem;
+            }
+            
+            .btn-futuristic {
+                padding: 20px;
+                font-size: 1rem;
+            }
+            
+            .fixed-home-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .receipt-logo {
+                font-size: 1.8rem;
+            }
+            
+            .countdown-timer {
+                font-size: 1.5rem;
+            }
+            
+            .status-badge {
+                padding: 10px 20px;
+                min-width: 120px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Utility Classes */
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px currentColor;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            border: 2px solid var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-cyan);
+        }
+
+        /* Selection Color */
+        ::selection {
+            background: rgba(0, 247, 255, 0.3);
+            color: white;
+        }
+
+        /* Focus Outline */
+        :focus-visible {
+            outline: 3px solid var(--accent-cyan);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="particles-container" id="particlesContainer"></div>
+    <div class="grid-lines"></div>
+    <div class="scanline"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <!-- Tombol Kembali ke Home - Holographic -->
+    <button class="fixed-home-btn" onclick="goToHome()" title="Kembali ke Halaman Utama">
+        <i class="fas fa-home"></i>
+    </button>
+
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="logo">SH STORE</h1>
+            <p class="subtitle">Generator Nota Joki Fish It PRO</p>
+            <p class="description">Sistem canggih dengan interface holografik futuristik. Fitur lengkap dengan animasi real-time, efek visual dinamis, dan kontrol intuitif.</p>
+        </div>
+
+        <!-- Tombol Utama -->
+        <div class="button-grid">
+            <button class="btn-futuristic btn-primary" onclick="clearFormAndResetMode(); openInputFormModal();">
+                <i class="fas fa-plus-circle btn-icon"></i>
+                <span>Buat Nota Baru</span>
+            </button>
+            
+            <button class="btn-futuristic btn-secondary" onclick="openHistoryModal()">
+                <i class="fas fa-history btn-icon"></i>
+                <span>Riwayat Transaksi</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Input Form -->
+    <div id="inputFormModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-edit"></i>
+                    <span>Data Input Nota Transaksi</span>
+                </h2>
+            </div>
+            
+            <div class="modal-body">
+                <form id="notaForm" onsubmit="handleFormSubmit(event)">
+                    <input type="hidden" id="currentNotaId" value="">
+                    
+                    <div class="form-grid">
+                        <!-- Kolom 1 -->
+                        <div>
+                            <div class="form-group">
+                                <label class="form-label">Nama / ID Pemesan:</label>
+                                <input type="text" id="idPemesan" class="form-input" value="" onkeyup="saveFormDataCache()" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Nama Produk Utama:</label>
+                                <input type="text" id="namaProdukDisplay" class="form-input" value="JOKI AFK FISH IT" readonly>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Jenis Produk:</label>
+                                <input type="text" id="jenisProduk" class="form-input" value="Joki Premium 1x" onkeyup="saveFormDataCache()" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Durasi Joki (Jam):</label>
+                                <input type="number" id="jumlahJamJoki" class="form-input" value="12" min="1" onkeyup="saveFormDataCache()" onchange="saveFormDataCache()" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Kolom 2 -->
+                        <div>
+                            <div class="form-group">
+                                <label class="form-label">Harga Produk:</label>
+                                <input type="text" id="hargaProduk" class="form-input" value="Rp50.000" onkeyup="formatRupiah(this); saveFormDataCache();" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Nomor Invoice:</label>
+                                <input type="text" id="nomorInvoice" class="form-input" value="Akan Dibuat Otomatis" readonly>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Via Transaksi:</label>
+                                <select id="viaTransaksi" class="form-input" onchange="saveFormDataCache()">
+                                    <option value="Direct">Direct</option>
+                                    <option value="Rekber">Rekber (Rekening Bersama)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Metode Pembayaran:</label>
+                                <select id="metodePembayaran" class="form-input" onchange="saveFormDataCache()">
+                                    <option value="QRIS">QRIS</option>
+                                    <option value="EWallet">E-Wallet</option>
+                                    <option value="BankTransfer">Bank Transfer</option>
+                                    <option value="Cash">Cash</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <!-- Kolom 3 -->
+                        <div>
+                            <div class="form-group">
+                                <label class="form-label">Status Transaksi:</label>
+                                <select id="statusTransaksi" class="form-input" onchange="saveFormDataCache()">
+                                    <option value="Proccess">Proccess</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Success">Success</option>
+                                    <option value="Failed">Failed</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Status Pembayaran:</label>
+                                <select id="statusPembayaran" class="form-input" onchange="saveFormDataCache()">
+                                    <option value="Paid">Paid</option>
+                                    <option value="Unpaid">Unpaid</option>
+                                    <option value="Pending">Pending</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Kolom 4 -->
+                        <div>
+                            <div class="form-group">
+                                <label class="form-label">Pesan Transaksi (opsional):</label>
+                                <input type="text" id="pesanTransaksi" class="form-input" value="" onkeyup="saveFormDataCache()">
+                            </div>
+                            
+                            <div class="form-group" id="formGroupWaktuMasuk" style="display: none;">
+                                <label class="form-label">Waktu Pesanan Masuk:</label>
+                                <input type="text" id="waktuPesananMasuk" class="form-input" value="" readonly>
+                            </div>
+                            
+                            <div class="form-group" id="formGroupWaktuSelesai" style="display: none;">
+                                <label class="form-label">Waktu Pesanan Selesai:</label>
+                                <input type="text" id="waktuPesananSelesai" class="form-input" value="" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Modal Actions -->
+                    <div class="modal-actions">
+                        <button type="submit" class="btn-futuristic btn-primary">
+                            <i class="fas fa-eye"></i>
+                            <span>Lihat & Simpan Nota</span>
+                        </button>
+                        
+                        <button type="button" onclick="clearFormAndResetMode();" class="btn-futuristic btn-secondary">
+                            <i class="fas fa-plus"></i>
+                            <span>Buat Nota Baru</span>
+                        </button>
+                        
+                        <button type="button" onclick="closeInputFormModal();" class="btn-futuristic btn-danger">
+                            <i class="fas fa-times"></i>
+                            <span>Kembali ke Menu Utama</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Receipt -->
+    <div id="receiptModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-receipt"></i>
+                    <span>HASIL NOTA</span>
+                </h2>
+            </div>
+            
+            <div class="modal-body">
+                <div class="receipt-container" id="notaUntukDownload">
+                    <!-- Header Nota -->
+                    <div class="receipt-header">
+                        <h2 class="receipt-logo" style="color: #00f7ff !important; -webkit-text-fill-color: #00f7ff !important; background: none !important;">SH STORE</h2>
+                        <p class="receipt-title" id="notaNamaProdukUtama">JOKI AFK FISH IT</p>
+                        <p class="receipt-subtitle">Nota Transaksi Digital</p>
+                    </div>
+                    
+                    <!-- Body Nota -->
+                    <div class="receipt-body">
+                        <!-- Grid untuk informasi utama -->
+                        <div class="receipt-grid">
+                            <div class="receipt-info-group">
+                                <span class="receipt-info-label">ID Pemesan</span>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="receipt-info-value highlight" id="notaIdPemesan"></span>
+                                    <button class="copy-btn-small" onclick="copyToClipboard('notaIdPemesan')" title="Salin ID">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="receipt-info-group">
+                                <span class="receipt-info-label">Nomor Invoice</span>
+                                <div style="display: flex; align-items: center;">
+                                    <span class="receipt-info-value invoice" id="notaNomorInvoice"></span>
+                                    <button class="copy-btn-small" onclick="copyToClipboard('notaNomorInvoice')" title="Salin Invoice">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="receipt-info-group">
+                                <span class="receipt-info-label">Jenis Produk</span>
+                                <span class="receipt-info-value" id="notaJenisProduk"></span>
+                            </div>
+                            
+                            <div class="receipt-info-group">
+                                <span class="receipt-info-label">Durasi Joki</span>
+                                <span class="receipt-info-value" id="notaDurasi"></span>
+                            </div>
+                            
+                            <div class="receipt-info-group">
+                                <span class="receipt-info-label">Harga</span>
+                                <span class="receipt-info-value highlight" id="notaHargaProduk"></span>
+                            </div>
+                            
+                            <div class="receipt-info-group">
+                                <span class="receipt-info-label">Metode Pembayaran</span>
+                                <span class="receipt-info-value" id="notaMetodePembayaran"></span>
+                            </div>
+                            
+                            <div class="receipt-info-group">
+                                <span class="receipt-info-label">Via Transaksi</span>
+                                <span class="receipt-info-value" id="notaViaTransaksi"></span>
+                            </div>
+                            
+                            <div class="receipt-info-group">
+                                <span class="receipt-info-label">Waktu Masuk</span>
+                                <span class="receipt-info-value" id="notaWaktuMasuk"></span>
+                            </div>
+                            
+                            <div class="receipt-info-group">
+                                <span class="receipt-info-label">Waktu Selesai</span>
+                                <span class="receipt-info-value" id="notaWaktuSelesai"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Divider -->
+                        <div class="receipt-divider"></div>
+                        
+                        <!-- Section untuk status -->
+                        <div class="receipt-status-section">
+                            <div class="status-item">
+                                <span class="status-label">Status Transaksi</span>
+                                <span class="status-badge" id="notaStatusTransaksi"></span>
+                            </div>
+                            
+                            <div class="status-item">
+                                <span class="status-label">Status Pembayaran</span>
+                                <span class="status-badge" id="notaStatusPembayaran"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Countdown Section -->
+                        <div id="countdownContainer" style="display: none;">
+                            <div class="receipt-countdown-section">
+                                <span class="countdown-label">Sisa Waktu Joki</span>
+                                <div class="countdown-timer" id="countdownText">00:00:00</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pesan Transaksi -->
+                        <div id="pesanTransaksiContainer" style="display: none;">
+                            <div class="receipt-divider"></div>
+                            <div class="receipt-message-section">
+                                <span class="message-label">Pesan Transaksi</span>
+                                <div style="display: flex; align-items: flex-start;">
+                                    <p class="message-content" id="notaPesanTransaksi"></p>
+                                    <button class="copy-btn-small" onclick="copyToClipboard('notaPesanTransaksi')" title="Salin Pesan" style="margin-left: 15px; margin-top: 5px;">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal Actions -->
+                <div class="modal-actions">
+                    <button id="downloadNotaBtn" class="btn-futuristic btn-primary">
+                        <i class="fas fa-download"></i>
+                        <span>Download Nota</span>
+                    </button>
+                    
+                    <button type="button" onclick="closeReceiptModal();" class="btn-futuristic btn-danger">
+                        <i class="fas fa-times"></i>
+                        <span>Tutup Nota</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal History -->
+    <div id="historyModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-history"></i>
+                    <span>Riwayat Transaksi Nota</span>
+                </h2>
+            </div>
+            
+            <div class="modal-body">
+                <div class="history-controls">
+                    <div class="search-container">
+                        <input type="text" id="historySearchInput" class="search-input" placeholder="Cari invoice atau nama pemesan...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    
+                    <div class="filter-buttons">
+                        <button class="filter-btn active All" onclick="filterHistory('All', this)">Semua</button>
+                        <button class="filter-btn Failed" onclick="filterHistory('Failed', this)">Failed</button>
+                        <button class="filter-btn Pending" onclick="filterHistory('Pending', this)">Pending</button>
+                        <button class="filter-btn Proccess" onclick="filterHistory('Proccess', this)">Proccess</button>
+                        <button class="filter-btn Success" onclick="filterHistory('Success', this)">Success</button>
+                    </div>
+                </div>
+                
+                <!-- Grid untuk Card History -->
+                <div class="cards-grid" id="historyGridContainer">
+                    <!-- Cards akan di-generate oleh JavaScript -->
+                </div>
+                
+                <!-- Empty State -->
+                <div id="noHistoryText" class="empty-state" style="display: none;">
+                    <div class="empty-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3 class="empty-title">Belum ada transaksi</h3>
+                    <p class="empty-text">Belum ada nota Joki Fish It yang tersimpan. Klik tombol "Buat Nota Baru" untuk memulai.</p>
+                </div>
+                
+                <!-- Modal Actions -->
+                <div class="modal-actions">
+                    <button onclick="closeHistoryModal()" class="btn-futuristic btn-danger">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Kembali ke Menu Utama</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript dengan efek tambahan -->
+    <script>
+        // =================================================================
+        //                 FUNGSI EFEK VISUAL TAMBAHAN
+        // =================================================================
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size
+                const size = Math.random() * 6 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random color
+                const colors = [
+                    'rgba(0, 247, 255, 0.15)',
+                    'rgba(138, 92, 245, 0.15)',
+                    'rgba(93, 124, 255, 0.15)',
+                    'rgba(255, 42, 156, 0.15)'
+                ];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random animation delay and duration
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                particle.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // =================================================================
+        //                 FUNGSI TOMBOL HOME FIXED
+        // =================================================================
+        function goToHome() {
+            closeInputFormModal();
+            closeReceiptModal();
+            closeHistoryModal();
+            clearFormAndResetMode();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            const homeBtn = document.querySelector('.fixed-home-btn');
+            homeBtn.style.animation = 'none';
+            setTimeout(() => {
+                homeBtn.style.animation = 'holographicGlow 3s infinite alternate';
+            }, 10);
+        }
+
+        // =================================================================
+        //                 VARIABEL KONSTANTA GLOBAL
+        // =================================================================
+        const FORM_ELEMENT_IDS = [
+            'idPemesan', 
+            'namaProdukDisplay', 
+            'jenisProduk', 
+            'jumlahJamJoki', 
+            'hargaProduk', 
+            'nomorInvoice', 
+            'viaTransaksi', 
+            'metodePembayaran', 
+            'statusTransaksi', 
+            'statusPembayaran', 
+            'pesanTransaksi'
+        ];
+        
+        const CACHE_KEY = 'notaFormCache_FISHIT'; 
+        const HISTORY_KEY = 'notaHistoryData_FISHIT'; 
+        
+        let countdownInterval;
+        let historyInterval;
+        let currentFilterStatus = 'All';
+
+        // =================================================================
+        //                 FUNGSI UTILITAS WAKTU (DIPERBAIKI)
+        // =================================================================
+        const MS_IN_DAY = 1000 * 60 * 60 * 24;
+        const MS_IN_HOUR = 1000 * 60 * 60;
+        const MS_IN_MINUTE = 1000 * 60;
+        const MS_IN_SECOND = 1000;
+        
+        function formatDateTime(isoString) {
+            if (!isoString || isoString === 'N/A') return 'N/A';
+            const date = new Date(isoString);
+            const dateOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+            const datePart = date.toLocaleDateString('id-ID', dateOptions);
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const timePart = date.toLocaleTimeString('id-ID', timeOptions);
+            return `${datePart} ${timePart} WIB`;
+        }
+        
+        function getCurrentDateTimeISO() {
+            return new Date().toISOString();
+        }
+
+        function getDurationInSeconds(hours) {
+            return parseInt(hours) * 3600;
+        }
+        
+        // FUNGSI UTAMA YANG DIPERBAIKI: formatCountdown untuk >24 jam
+        function formatCountdown(distance) {
+            distance = Math.max(0, distance);
+            
+            // Hitung hari
+            const days = Math.floor(distance / MS_IN_DAY);
+            distance %= MS_IN_DAY;
+            
+            // Hitung jam
+            const hours = Math.floor(distance / MS_IN_HOUR);
+            distance %= MS_IN_HOUR;
+            
+            // Hitung menit
+            const minutes = Math.floor(distance / MS_IN_MINUTE);
+            distance %= MS_IN_MINUTE;
+            
+            // Hitung detik
+            const seconds = Math.floor(distance / MS_IN_SECOND);
+            
+            // Format output berdasarkan apakah ada hari atau tidak
+            let countdownDisplay = '';
+            
+            if (days > 0) {
+                countdownDisplay = `${days}H ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            } else {
+                countdownDisplay = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
+                
+            return countdownDisplay;
+        }
+
+        // =================================================================
+        //                 FUNGSI ESTIMASI WAKTU SELESAI
+        // =================================================================
+        function calculateEstimatedEndTime(startTimeISO, durationHours) {
+            if (!startTimeISO || !durationHours) return null;
+            
+            const startTime = new Date(startTimeISO);
+            const durationMs = parseInt(durationHours) * 60 * 60 * 1000;
+            const endTime = new Date(startTime.getTime() + durationMs);
+            
+            return endTime;
+        }
+
+        function formatEstimatedTime(endTime) {
+            if (!endTime) return 'N/A';
+            
+            const now = new Date();
+            const timeDiff = endTime - now;
+            
+            if (timeDiff < 0) {
+                return 'Selesai';
+            }
+            
+            // Hitung hari, jam, menit, detik
+            const days = Math.floor(timeDiff / MS_IN_DAY);
+            const hours = Math.floor((timeDiff % MS_IN_DAY) / MS_IN_HOUR);
+            const minutes = Math.floor((timeDiff % MS_IN_HOUR) / MS_IN_MINUTE);
+            const seconds = Math.floor((timeDiff % MS_IN_MINUTE) / MS_IN_SECOND);
+            
+            if (days > 0) {
+                return `${days}H ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            } else {
+                return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        function updateEstimatedTimeDisplay() {
+            const estimatedTimeElements = document.querySelectorAll('.estimated-time-display');
+            
+            requestAnimationFrame(() => {
+                estimatedTimeElements.forEach(element => {
+                    const invoice = element.getAttribute('data-invoice');
+                    const data = getNotaByInvoice(invoice);
+                    
+                    if (data && data.statusTransaksi === 'Proccess' && !data.isPaused) {
+                        const endTime = calculateEstimatedEndTime(
+                            data.currentDateTimeISO, 
+                            data.jumlahJamJoki
+                        );
+                        
+                        if (endTime) {
+                            element.textContent = formatEstimatedTime(endTime);
+                            
+                            // Tambahkan class jika waktu hampir habis (< 1 jam)
+                            const timeDiff = endTime - new Date();
+                            if (timeDiff < 3600000 && timeDiff > 0) { // < 1 jam
+                                element.classList.add('estimated-time-warning');
+                            } else {
+                                element.classList.remove('estimated-time-warning');
+                            }
+                        }
+                    } else if (data && data.statusTransaksi === 'Proccess' && data.isPaused) {
+                        element.textContent = 'Dijeda';
+                        element.classList.add('estimated-time-paused');
+                    } else if (data && data.statusTransaksi === 'Success') {
+                        element.textContent = 'Selesai';
+                        element.classList.add('estimated-time-completed');
+                    } else {
+                        element.textContent = 'N/A';
+                        element.classList.remove(
+                            'estimated-time-warning', 
+                            'estimated-time-paused', 
+                            'estimated-time-completed'
+                        );
+                    }
+                });
+            });
+        }
+
+        // =================================================================
+        //                 FUNGSI MANAJEMEN COUNTDOWN
+        // =================================================================
+        function stopCountdown() {
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+        }
+
+        function startCountdown(startTimeISO, durationSeconds) {
+            stopCountdown();
+            
+            const start = new Date(startTimeISO).getTime();
+            const end = start + durationSeconds * 1000;
+            const countdownContainer = document.getElementById('countdownContainer');
+            const countdownText = document.getElementById('countdownText');
+
+            countdownContainer.style.display = 'block';
+            countdownText.classList.remove('time-over', 'paused');
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                let distance = end - now;
+
+                if (distance < 0) {
+                    stopCountdown();
+                    countdownText.textContent = "WAKTU HABIS";
+                    countdownText.classList.add('time-over');
+                    return; 
+                }
+                
+                countdownText.textContent = formatCountdown(distance);
+                countdownText.classList.remove('time-over');
+            }
+
+            updateCountdown(); 
+            countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
+        function stopHistoryCountdown() {
+            if (historyInterval) {
+                clearInterval(historyInterval);
+                historyInterval = null;
+            }
+        }
+
+        function updateHistoryCountdown() {
+            if (window.historyCountdownTimeout) {
+                clearTimeout(window.historyCountdownTimeout);
+            }
+            
+            window.historyCountdownTimeout = setTimeout(() => {
+                const history = loadNotaHistory();
+                const now = new Date().getTime();
+
+                history.forEach(data => {
+                    const countdownElement = document.getElementById(`card-countdown-${data.nomorInvoice}`);
+                    const estimatedElement = document.getElementById(`estimated-${data.nomorInvoice}`);
+
+                    if (data.statusTransaksi === 'Proccess' && data.currentDateTimeISO && data.jumlahJamJoki) {
+                        if (countdownElement) {
+                            if (data.isPaused) {
+                                countdownElement.textContent = 'PAUSED ⏸️';
+                                countdownElement.classList.add('paused'); 
+                                countdownElement.classList.remove('time-over'); 
+                            } else {
+                                const durationSeconds = getDurationInSeconds(data.jumlahJamJoki);
+                                const start = new Date(data.currentDateTimeISO).getTime();
+                                const end = start + durationSeconds * 1000;
+                                let distance = end - now;
+                                
+                                countdownElement.classList.remove('paused');
+                                
+                                if (distance < 0) {
+                                    countdownElement.textContent = 'TIME OVER';
+                                    countdownElement.classList.add('time-over');
+                                } else {
+                                    // Gunakan fungsi formatCountdown yang sudah diperbaiki
+                                    countdownElement.textContent = formatCountdown(distance);
+                                    countdownElement.classList.remove('time-over'); 
+                                }
+                            }
+                        }
+                        
+                        if (estimatedElement) {
+                            const endTime = calculateEstimatedEndTime(data.currentDateTimeISO, data.jumlahJamJoki);
+                            if (endTime) {
+                                estimatedElement.textContent = formatDateTime(endTime);
+                            }
+                        }
+                    } else if (data.statusTransaksi === 'Pending') {
+                        if (countdownElement) {
+                            countdownElement.textContent = 'PENDING...';
+                            countdownElement.classList.add('paused'); 
+                        }
+                        
+                        if (estimatedElement) {
+                            estimatedElement.textContent = 'Menunggu';
+                        }
+                    } else if (data.statusTransaksi === 'Success') {
+                        if (estimatedElement) {
+                            estimatedElement.textContent = data.completionDateTime || 'Selesai';
+                        }
+                    }
+                });
+                
+                updateEstimatedTimeDisplay();
+            }, 500);
+        }
+        
+        function startHistoryCountdown() {
+            stopHistoryCountdown();
+            updateHistoryCountdown(); 
+            historyInterval = setInterval(updateHistoryCountdown, 1000);
+        }
+
+        // =================================================================
+        //                 FUNGSI MANAJEMEN NOTA
+        // =================================================================
+        function pauseNota(invoiceNumber) {
+            let history = loadNotaHistory();
+            const index = history.findIndex(item => item.nomorInvoice === invoiceNumber);
+
+            if (index !== -1 && history[index].statusTransaksi === 'Proccess') {
+                const data = history[index];
+                data.isPaused = true;
+                data.pauseTimeISO = getCurrentDateTimeISO();
+                saveNotaHistory(history);
+                renderNotaHistoryCards(); 
+                showNotification(`Nota ${invoiceNumber} berhasil dijeda.`, 'info');
+            }
+        }
+        
+        function resumeNota(invoiceNumber) {
+            let history = loadNotaHistory();
+            const index = history.findIndex(item => item.nomorInvoice === invoiceNumber);
+
+            if (index !== -1 && history[index].statusTransaksi === 'Proccess') {
+                const data = history[index];
+
+                if (data.isPaused && data.pauseTimeISO) {
+                    const pauseStart = new Date(data.pauseTimeISO).getTime();
+                    const pauseEnd = new Date().getTime();
+                    const pauseDurationMs = pauseEnd - pauseStart;
+
+                    const oldStartTime = new Date(data.currentDateTimeISO).getTime();
+                    const newStartTime = oldStartTime + pauseDurationMs;
+                    
+                    data.currentDateTimeISO = new Date(newStartTime).toISOString();
+                    data.currentDateTime = formatDateTime(data.currentDateTimeISO);
+                    data.isPaused = false;
+                    delete data.pauseTimeISO;
+                    
+                    saveNotaHistory(history);
+                    renderNotaHistoryCards(); 
+                    
+                    showNotification(`Nota ${invoiceNumber} berhasil dilanjutkan.`, 'success');
+                } else {
+                    showNotification('Nota tidak dalam status jeda.', 'warning');
+                }
+            }
+        }
+        
+        function changeStatusFromHistory(invoiceNumber, newStatus) {
+            let history = loadNotaHistory();
+            const index = history.findIndex(item => item.nomorInvoice === invoiceNumber);
+
+            if (index !== -1) {
+                const oldData = history[index];
+                const nowISO = getCurrentDateTimeISO();
+                const nowFormatted = formatDateTime(nowISO);
+
+                oldData.statusTransaksi = newStatus;
+                
+                if (newStatus === 'Success') {
+                    oldData.completionDateTime = nowFormatted;
+                    oldData.isPaused = false;
+                    delete oldData.pauseTimeISO;
+                } else if (newStatus === 'Proccess') {
+                    if (oldData.isPaused) {
+                        resumeNota(invoiceNumber); 
+                        return;
+                    }
+                    oldData.completionDateTime = 'N/A';
+                    oldData.isPaused = false;
+                    delete oldData.pauseTimeISO;
+                } else {
+                    oldData.completionDateTime = 'N/A';
+                    oldData.isPaused = false;
+                    delete oldData.pauseTimeISO;
+                }
+                
+                saveNotaHistory(history);
+                renderNotaHistoryCards();
+                
+                showNotification(`Status Nota ${invoiceNumber} berhasil diubah menjadi ${newStatus}.`, 'success');
+            }
+        }
+
+        // =================================================================
+        //                 FUNGSI MANAJEMEN MODAL
+        // =================================================================
+        function openInputFormModal() {
+            const modal = document.getElementById('inputFormModal');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+            loadFormDataCache();
+            const isEditing = !!document.getElementById('currentNotaId').value;
+            document.getElementById('formGroupWaktuMasuk').style.display = isEditing ? 'block' : 'none';
+            document.getElementById('formGroupWaktuSelesai').style.display = isEditing ? 'block' : 'none';
+        }
+
+        function closeInputFormModal() {
+            const modal = document.getElementById('inputFormModal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+        
+        function openReceiptModal() {
+            const modal = document.getElementById('receiptModal');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10); 
+        }
+        
+        function closeReceiptModal() {
+            stopCountdown(); 
+            document.getElementById('countdownContainer').style.display = 'none';
+            const modal = document.getElementById('receiptModal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300); 
+        }
+        
+        function openHistoryModal() {
+            const modal = document.getElementById('historyModal');
+            modal.style.display = 'flex';
+            currentFilterStatus = 'All';
+            const allFilterBtn = document.querySelector('.filter-btn.All');
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if (allFilterBtn) allFilterBtn.classList.add('active');
+            
+            renderNotaHistoryCards(); 
+            startHistoryCountdown();
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10); 
+        }
+
+        function closeHistoryModal() {
+            stopHistoryCountdown();
+            const modal = document.getElementById('historyModal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300); 
+        }
+
+        // =================================================================
+        //                 FUNGSI MANAJEMEN DATA
+        // =================================================================
+        function loadNotaHistory() {
+            const history = localStorage.getItem(HISTORY_KEY);
+            return history ? JSON.parse(history) : [];
+        }
+
+        function saveNotaHistory(history) {
+            localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+        }
+
+        function getNotaByInvoice(invoiceNumber) {
+            const history = loadNotaHistory();
+            return history.find(item => item.nomorInvoice === invoiceNumber);
+        }
+
+        function viewNotaFromHistory(invoiceNumber) {
+            const dataToLoad = getNotaByInvoice(invoiceNumber);
+
+            if (dataToLoad) {
+                FORM_ELEMENT_IDS.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element && dataToLoad[id] !== undefined) {
+                        element.value = dataToLoad[id];
+                    }
+                });
+                document.getElementById('currentNotaId').value = invoiceNumber;
+                document.getElementById('waktuPesananMasuk').value = dataToLoad.currentDateTime || 'N/A';
+                document.getElementById('waktuPesananSelesai').value = dataToLoad.completionDateTime || 'N/A';
+                updateNota(dataToLoad); 
+                closeHistoryModal(); 
+                openReceiptModal();
+            } else {
+                showNotification('Nota tidak ditemukan.', 'error');
+            }
+        }
+        
+        function editNotaFromHistory(invoiceNumber) {
+            loadNotaToForm(invoiceNumber);
+            closeHistoryModal();
+            openInputFormModal();
+        }
+
+        function renderNotaHistoryCards() {
+            const history = loadNotaHistory().sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            const gridContainer = document.getElementById('historyGridContainer');
+            const noHistory = document.getElementById('noHistoryText');
+            
+            const fragment = document.createDocumentFragment();
+            
+            if (history.length === 0) {
+                noHistory.style.display = 'block';
+                gridContainer.innerHTML = '';
+                return;
+            }
+
+            noHistory.style.display = 'none';
+            
+            history.forEach(data => {
+                const status = data.statusTransaksi;
+                const isPaused = data.isPaused || false;
+                
+                const card = document.createElement('div');
+                card.className = `history-card status-${status}`;
+                card.setAttribute('data-status', status);
+                card.setAttribute('data-invoice', data.nomorInvoice);
+                
+                // Header Card
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'card-header';
+                
+                const invoiceEl = document.createElement('div');
+                invoiceEl.className = 'card-invoice';
+                invoiceEl.textContent = data.nomorInvoice || 'N/A';
+                
+                const statusEl = document.createElement('div');
+                statusEl.className = 'card-status';
+                statusEl.textContent = status;
+                
+                headerDiv.appendChild(invoiceEl);
+                headerDiv.appendChild(statusEl);
+                
+                // Content Card
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'card-content';
+                
+                // Row: Customer
+                const customerRow = document.createElement('div');
+                customerRow.className = 'card-row';
+                customerRow.innerHTML = `
+                    <span class="card-label">Customer:</span>
+                    <span class="card-value">${data.idPemesan || 'N/A'}</span>
+                `;
+                
+                // Row: Product
+                const productRow = document.createElement('div');
+                productRow.className = 'card-row';
+                productRow.innerHTML = `
+                    <span class="card-label">Produk:</span>
+                    <span class="card-value">${data.jenisProduk || 'N/A'}</span>
+                `;
+                
+                // Row: Duration
+                const durationRow = document.createElement('div');
+                durationRow.className = 'card-row';
+                durationRow.innerHTML = `
+                    <span class="card-label">Durasi:</span>
+                    <span class="card-value">${data.jumlahJamJoki || '0'} Jam</span>
+                `;
+                
+                // Row: Price
+                const priceRow = document.createElement('div');
+                priceRow.className = 'card-row';
+                priceRow.innerHTML = `
+                    <span class="card-label">Harga:</span>
+                    <span class="card-value">${data.hargaProduk || 'N/A'}</span>
+                `;
+                
+                // Row for Estimated Completion Time
+                const estimatedTimeRow = document.createElement('div');
+                estimatedTimeRow.className = 'card-row';
+                estimatedTimeRow.innerHTML = `
+                    <span class="card-label">Estimasi Selesai:</span>
+                    <span class="card-value estimated-time-display" 
+                          data-invoice="${data.nomorInvoice}"
+                          id="estimated-${data.nomorInvoice}">Menghitung...</span>
+                `;
+                
+                contentDiv.appendChild(customerRow);
+                contentDiv.appendChild(productRow);
+                contentDiv.appendChild(durationRow);
+                contentDiv.appendChild(priceRow);
+                contentDiv.appendChild(estimatedTimeRow);
+                
+                // Countdown untuk Proccess dan Pending
+                if (status === 'Proccess' || status === 'Pending') {
+                    const countdownDiv = document.createElement('div');
+                    countdownDiv.className = 'card-countdown';
+                    
+                    const countdownTime = document.createElement('div');
+                    countdownTime.id = `card-countdown-${data.nomorInvoice}`;
+                    countdownTime.className = 'countdown-text';
+                    
+                    if (status === 'Proccess') {
+                        if (isPaused) {
+                            countdownTime.textContent = 'PAUSED ⏸️';
+                            countdownTime.classList.add('paused');
+                        } else {
+                            countdownTime.textContent = 'Loading...';
+                        }
+                    } else if (status === 'Pending') {
+                        countdownTime.textContent = 'PENDING...';
+                        countdownTime.classList.add('paused');
+                    }
+                    
+                    countdownDiv.appendChild(countdownTime);
+                    contentDiv.appendChild(countdownDiv);
+                }
+                
+                // Action Buttons
+                const actionsDiv = document.createElement('div');
+                actionsDiv.className = 'card-actions';
+                
+                // Tombol View
+                const viewBtn = document.createElement('button');
+                viewBtn.className = 'card-btn view';
+                viewBtn.innerHTML = '<i class="fas fa-eye"></i> View';
+                viewBtn.onclick = () => viewNotaFromHistory(data.nomorInvoice);
+                
+                // Tombol Edit
+                const editBtn = document.createElement('button');
+                editBtn.className = 'card-btn edit';
+                editBtn.innerHTML = '<i class="fas fa-edit"></i> Edit';
+                editBtn.onclick = () => editNotaFromHistory(data.nomorInvoice);
+                
+                actionsDiv.appendChild(viewBtn);
+                actionsDiv.appendChild(editBtn);
+                
+                // Tombol berdasarkan status
+                if (status === 'Proccess') {
+                    if (isPaused) {
+                        const resumeBtn = document.createElement('button');
+                        resumeBtn.className = 'card-btn success';
+                        resumeBtn.innerHTML = '<i class="fas fa-play"></i> Lanjut';
+                        resumeBtn.onclick = () => resumeNota(data.nomorInvoice);
+                        actionsDiv.appendChild(resumeBtn);
+                    } else {
+                        const pauseBtn = document.createElement('button');
+                        pauseBtn.className = 'card-btn action';
+                        pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Stop';
+                        pauseBtn.onclick = () => pauseNota(data.nomorInvoice);
+                        actionsDiv.appendChild(pauseBtn);
+                        
+                        const successBtn = document.createElement('button');
+                        successBtn.className = 'card-btn success';
+                        successBtn.innerHTML = '<i class="fas fa-check"></i> Selesai';
+                        successBtn.onclick = () => changeStatusFromHistory(data.nomorInvoice, 'Success');
+                        actionsDiv.appendChild(successBtn);
+                    }
+                } else if (status === 'Pending') {
+                    const processBtn = document.createElement('button');
+                    processBtn.className = 'card-btn action';
+                    processBtn.innerHTML = '<i class="fas fa-play"></i> Proses';
+                    processBtn.onclick = () => changeStatusFromHistory(data.nomorInvoice, 'Proccess');
+                    actionsDiv.appendChild(processBtn);
+                }
+                
+                // Tombol Delete
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'card-btn delete';
+                deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Hapus';
+                deleteBtn.onclick = () => deleteNota(data.nomorInvoice);
+                actionsDiv.appendChild(deleteBtn);
+                
+                // Gabungkan semua elemen
+                card.appendChild(headerDiv);
+                card.appendChild(contentDiv);
+                card.appendChild(actionsDiv);
+                
+                fragment.appendChild(card);
+            });
+            
+            gridContainer.innerHTML = '';
+            gridContainer.appendChild(fragment);
+            
+            updateEstimatedTimeDisplay();
+            filterHistory(currentFilterStatus);
+        }
+
+        function deleteNota(invoiceNumber) {
+            if (confirm(`Apakah Anda yakin ingin menghapus Nota dengan Invoice ${invoiceNumber}?`)) {
+                let history = loadNotaHistory();
+                history = history.filter(item => item.nomorInvoice !== invoiceNumber);
+                saveNotaHistory(history);
+                renderNotaHistoryCards();
+                
+                showNotification(`Nota ${invoiceNumber} berhasil dihapus.`, 'success');
+                
+                if (document.getElementById('nomorInvoice').value === invoiceNumber) {
+                    clearFormAndResetMode(); 
+                }
+            }
+        }
+
+        function clearFormAndResetMode() {
+            document.getElementById('idPemesan').value = ''; 
+            document.getElementById('namaProdukDisplay').value = 'JOKI AFK FISH IT'; 
+            document.getElementById('jenisProduk').value = 'Joki Premium 1x'; 
+            document.getElementById('jumlahJamJoki').value = '12';
+            document.getElementById('hargaProduk').value = 'Rp50.000';
+            document.getElementById('viaTransaksi').value = 'Direct'; 
+            document.getElementById('metodePembayaran').value = 'QRIS';
+            document.getElementById('statusTransaksi').value = 'Proccess'; 
+            document.getElementById('statusPembayaran').value = 'Paid';
+            document.getElementById('pesanTransaksi').value = ''; 
+            document.getElementById('nomorInvoice').value = 'Akan Dibuat Otomatis';
+            document.getElementById('currentNotaId').value = '';
+            document.getElementById('waktuPesananMasuk').value = '';
+            document.getElementById('waktuPesananSelesai').value = '';
+            localStorage.removeItem(CACHE_KEY);
+        }
+
+        function loadNotaToForm(invoiceNumber) {
+            const dataToLoad = getNotaByInvoice(invoiceNumber);
+            if (dataToLoad) {
+                FORM_ELEMENT_IDS.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element && dataToLoad[id] !== undefined) {
+                        element.value = dataToLoad[id];
+                    }
+                });
+                document.getElementById('waktuPesananMasuk').value = dataToLoad.currentDateTime || 'N/A';
+                document.getElementById('waktuPesananSelesai').value = dataToLoad.completionDateTime || 'N/A';
+                document.getElementById('currentNotaId').value = invoiceNumber;
+                saveFormDataCache(); 
+            } else {
+                showNotification('Nota tidak ditemukan.', 'error');
+            }
+        }
+        
+        function saveFormDataCache() {
+            const formData = {};
+            FORM_ELEMENT_IDS.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    formData[id] = element.value.trim();
+                }
+            });
+            formData['currentNotaId'] = document.getElementById('currentNotaId').value;
+            localStorage.setItem(CACHE_KEY, JSON.stringify(formData));
+        }
+
+        function loadFormDataCache() {
+            const cachedData = localStorage.getItem(CACHE_KEY);
+            if (cachedData) {
+                const formData = JSON.parse(cachedData);
+                FORM_ELEMENT_IDS.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element && formData[id] !== undefined) {
+                        element.value = formData[id];
+                    }
+                });
+                document.getElementById('currentNotaId').value = formData['currentNotaId'] || '';
+                const hargaInput = document.getElementById('hargaProduk');
+                if (hargaInput.value) {
+                    formatRupiah(hargaInput);
+                }
+            } else {
+                document.getElementById('jumlahJamJoki').value = '12';
+                document.getElementById('hargaProduk').value = 'Rp50.000';
+            }
+        }
+
+        // =================================================================
+        //                 FUNGSI UTILITAS
+        // =================================================================
+        function formatRupiah(inputElement) {
+            let value = inputElement.value;
+            value = value.replace(/[^0-9]/g, '');
+            
+            if (value === "") {
+                inputElement.value = "";
+                return;
+            }
+
+            let rupiah = '';
+            let angkarev = value.split('').reverse().join('');
+            for (let i = 0; i < angkarev.length; i++) {
+                if (i % 3 === 0) rupiah += angkarev.substr(i, 3) + '.';
+            }
+            let finalRupiah = 'Rp' + rupiah.split('').reverse().join('');
+            
+            if (finalRupiah.startsWith('Rp.')) finalRupiah = 'Rp' + finalRupiah.substring(3);
+            inputElement.value = finalRupiah;
+        }
+        
+        function generateInvoiceNumber() {
+            const now = new Date();
+            const datePart = [
+                now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'),
+                String(now.getDate()).padStart(2, '0'), String(now.getHours()).padStart(2, '0'),
+                String(now.getMinutes()).padStart(2, '0'), String(now.getSeconds()).padStart(2, '0')
+            ].join('');
+            const randomPart = Math.floor(100 + Math.random() * 900); 
+            return `IVFX${datePart}${randomPart}`;
+        }
+        
+        function copyToClipboard(elementId) {
+            const textToCopy = document.getElementById(elementId).textContent.trim();
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showNotification('Teks berhasil disalin!', 'success');
+            }).catch(err => {
+                console.error('Gagal menyalin:', err);
+                showNotification('Gagal menyalin teks.', 'error');
+            });
+        }
+        
+        // =================================================================
+        //                 FUNGSI UPDATE NOTA
+        // =================================================================
+        function updateNota(data) {
+            let badgeClass = '';
+            let paymentBadgeClass = '';
+            
+            if (data.statusTransaksi === 'Success') {
+                badgeClass = 'status-success';
+            } else if (data.statusTransaksi === 'Proccess') {
+                badgeClass = 'status-proccess';
+            } else if (data.statusTransaksi === 'Pending') {
+                badgeClass = 'status-pending';
+            } else if (data.statusTransaksi === 'Failed') {
+                badgeClass = 'status-failed';
+            }
+
+            if (data.statusPembayaran === 'Paid') {
+                paymentBadgeClass = 'status-paid';
+            } else if (data.statusPembayaran === 'Unpaid') {
+                paymentBadgeClass = 'status-unpaid';
+            } else if (data.statusPembayaran === 'Pending') {
+                paymentBadgeClass = 'status-pending';
+            }
+
+            // Update informasi utama
+            document.getElementById('notaIdPemesan').textContent = data.idPemesan || 'N/A';
+            document.getElementById('notaNomorInvoice').textContent = data.nomorInvoice || 'N/A';
+            document.getElementById('notaJenisProduk').textContent = `${data.jenisProduk || 'N/A'} (${data.jumlahJamJoki || '0'} Jam)`;
+            document.getElementById('notaDurasi').textContent = `${data.jumlahJamJoki || '0'} Jam`;
+            document.getElementById('notaHargaProduk').textContent = data.hargaProduk || 'N/A';
+            document.getElementById('notaMetodePembayaran').textContent = data.metodePembayaran || 'N/A';
+            document.getElementById('notaViaTransaksi').textContent = data.viaTransaksi || 'N/A';
+            document.getElementById('notaWaktuMasuk').textContent = data.currentDateTime || 'N/A';
+            document.getElementById('notaWaktuSelesai').textContent = data.completionDateTime || 'N/A';
+            
+            // Update status
+            const statusTransaksiEl = document.getElementById('notaStatusTransaksi');
+            statusTransaksiEl.textContent = data.statusTransaksi || 'N/A';
+            statusTransaksiEl.className = `status-badge ${badgeClass}`;
+            
+            const statusPembayaranEl = document.getElementById('notaStatusPembayaran');
+            statusPembayaranEl.textContent = data.statusPembayaran || 'N/A';
+            statusPembayaranEl.className = `status-badge ${paymentBadgeClass}`;
+            
+            // TAMBAHKAN: Update estimasi waktu selesai di nota
+            if (data.statusTransaksi === 'Proccess' && data.currentDateTimeISO && data.jumlahJamJoki) {
+                const endTime = calculateEstimatedEndTime(data.currentDateTimeISO, data.jumlahJamJoki);
+                const estimatedTimeElement = document.getElementById('notaEstimasiSelesai');
+                
+                if (!estimatedTimeElement) {
+                    const receiptGrid = document.querySelector('.receipt-grid');
+                    if (receiptGrid) {
+                        const estimatedGroup = document.createElement('div');
+                        estimatedGroup.className = 'receipt-info-group';
+                        estimatedGroup.innerHTML = `
+                            <span class="receipt-info-label">Estimasi Selesai</span>
+                            <span class="receipt-info-value highlight" id="notaEstimasiSelesai"></span>
+                        `;
+                        receiptGrid.appendChild(estimatedGroup);
+                    }
+                }
+                
+                if (endTime) {
+                    document.getElementById('notaEstimasiSelesai').textContent = formatDateTime(endTime);
+                }
+            } else {
+                const estimatedElement = document.getElementById('notaEstimasiSelesai');
+                if (estimatedElement && estimatedElement.parentElement) {
+                    estimatedElement.parentElement.remove();
+                }
+            }
+            
+            // Update pesan transaksi
+            const finalPesan = data.pesanTransaksi || '';
+            const pesanContainer = document.getElementById('pesanTransaksiContainer');
+            const pesanContent = document.getElementById('notaPesanTransaksi');
+            
+            if (finalPesan.trim()) {
+                pesanContent.textContent = finalPesan;
+                pesanContainer.style.display = 'block';
+            } else {
+                pesanContainer.style.display = 'none';
+            }
+            
+            // Handle countdown
+            stopCountdown();
+            const countdownContainer = document.getElementById('countdownContainer');
+            const countdownText = document.getElementById('countdownText');
+            
+            countdownContainer.style.display = 'none';
+            countdownText.classList.remove('time-over', 'paused');
+            
+            if (data.statusTransaksi === 'Proccess' && !data.isPaused) {
+                const hours = parseInt(data.jumlahJamJoki) || 0;
+                const durationSeconds = getDurationInSeconds(hours);
+
+                if (durationSeconds > 0 && data.currentDateTimeISO) {
+                    startCountdown(data.currentDateTimeISO, durationSeconds);
+                }
+            } else if (data.statusTransaksi === 'Proccess' && data.isPaused) {
+                countdownContainer.style.display = 'block';
+                countdownText.textContent = 'PAUSED ⏸️';
+                countdownText.classList.add('paused');
+            }
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault(); 
+            closeInputFormModal();
+
+            let currentInvoiceNumber = document.getElementById('currentNotaId').value;
+            const isEditingExisting = !!currentInvoiceNumber && currentInvoiceNumber !== 'Akan Dibuat Otomatis'; 
+            
+            const nowISO = getCurrentDateTimeISO();
+            const nowFormatted = formatDateTime(nowISO);
+            
+            let history = loadNotaHistory();
+            let newNotaData = {};
+            
+            FORM_ELEMENT_IDS.forEach(id => newNotaData[id] = document.getElementById(id).value);
+            newNotaData.timestamp = new Date().toISOString(); 
+            
+            let startISO;
+            
+            if (!isEditingExisting) {
+                currentInvoiceNumber = generateInvoiceNumber(); 
+                document.getElementById('nomorInvoice').value = currentInvoiceNumber; 
+                newNotaData.nomorInvoice = currentInvoiceNumber;
+                startISO = nowISO;
+                newNotaData.currentDateTimeISO = startISO; 
+                newNotaData.currentDateTime = nowFormatted;
+                newNotaData.isPaused = false;
+                
+                if (newNotaData.statusTransaksi === 'Success') {
+                    newNotaData.completionDateTime = nowFormatted;
+                } else {
+                    newNotaData.completionDateTime = 'N/A';
+                }
+                
+                history.push(newNotaData);
+            } else {
+                const index = history.findIndex(item => item.nomorInvoice === currentInvoiceNumber);
+                if (index !== -1) {
+                    const oldData = history[index];
+                    startISO = oldData.currentDateTimeISO || nowISO;
+                    newNotaData.currentDateTimeISO = startISO;
+                    newNotaData.currentDateTime = oldData.currentDateTime || formatDateTime(startISO); 
+                    newNotaData.nomorInvoice = oldData.nomorInvoice;
+                    newNotaData.isPaused = oldData.isPaused || false;
+                    newNotaData.pauseTimeISO = oldData.pauseTimeISO || undefined;
+                    
+                    if (oldData.statusTransaksi === 'Success' && newNotaData.statusTransaksi === 'Success') {
+                        newNotaData.completionDateTime = oldData.completionDateTime;
+                    } else if (oldData.statusTransaksi !== 'Success' && newNotaData.statusTransaksi === 'Success') {
+                        newNotaData.completionDateTime = nowFormatted;
+                    } else {
+                        newNotaData.completionDateTime = 'N/A';
+                    }
+                    
+                    if (newNotaData.statusTransaksi !== 'Proccess') {
+                        newNotaData.isPaused = false;
+                        delete newNotaData.pauseTimeISO;
+                    }
+                    
+                    if (oldData.isPaused && newNotaData.statusTransaksi === 'Proccess') {
+                        const pauseStart = new Date(oldData.pauseTimeISO).getTime();
+                        const pauseEnd = new Date().getTime();
+                        const pauseDurationMs = pauseEnd - pauseStart;
+
+                        const oldStartTime = new Date(oldData.currentDateTimeISO).getTime();
+                        const newStartTime = oldStartTime + pauseDurationMs;
+                        
+                        newNotaData.currentDateTimeISO = new Date(newStartTime).toISOString();
+                        newNotaData.currentDateTime = formatDateTime(newNotaData.currentDateTimeISO);
+                        newNotaData.isPaused = false;
+                        delete newNotaData.pauseTimeISO;
+                    }
+
+                    history[index] = newNotaData; 
+                }
+            }
+            
+            saveNotaHistory(history); 
+            localStorage.removeItem(CACHE_KEY); 
+            document.getElementById('currentNotaId').value = currentInvoiceNumber; 
+            document.getElementById('waktuPesananMasuk').value = newNotaData.currentDateTime;
+            document.getElementById('waktuPesananSelesai').value = newNotaData.completionDateTime;
+            updateNota(newNotaData); 
+            openReceiptModal(); 
+            
+            showNotification(`Nota ${currentInvoiceNumber} berhasil disimpan!`, 'success');
+        }
+
+        // =================================================================
+        //                 FILTER & SEARCH
+        // =================================================================
+        function filterHistory(filterStatus = null, clickedButton = null) {
+            const cards = document.querySelectorAll('.history-card');
+            const noHistory = document.getElementById('noHistoryText');
+            
+            if (filterStatus) {
+                currentFilterStatus = filterStatus;
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                if (clickedButton) {
+                    clickedButton.classList.add('active');
+                } else {
+                    const activeBtn = document.querySelector(`.filter-btn.${currentFilterStatus}`);
+                    if (activeBtn) activeBtn.classList.add('active');
+                }
+            }
+            
+            const searchInput = document.getElementById('historySearchInput').value.toUpperCase();
+            let visibleCardCount = 0;
+
+            cards.forEach(card => {
+                const invoiceText = card.querySelector('.card-invoice').textContent || '';
+                const customerRow = card.querySelector('.card-row');
+                const customerText = customerRow ? customerRow.querySelector('.card-value').textContent || '' : '';
+                const cardStatus = card.getAttribute('data-status');
+                
+                const statusMatch = (currentFilterStatus === 'All' || cardStatus === currentFilterStatus);
+                const searchMatch = (invoiceText.toUpperCase().indexOf(searchInput) > -1 || 
+                                    customerText.toUpperCase().indexOf(searchInput) > -1);
+                
+                if (statusMatch && searchMatch) {
+                    card.style.display = 'block'; 
+                    visibleCardCount++;
+                } else {
+                    card.style.display = 'none'; 
+                }
+            });
+            
+            const allHistory = loadNotaHistory();
+            if (allHistory.length === 0) {
+                noHistory.style.display = 'block';
+                noHistory.innerHTML = `
+                    <div class="empty-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3 class="empty-title">Belum ada transaksi</h3>
+                    <p class="empty-text">Belum ada nota Joki Fish It yang tersimpan. Klik tombol "Buat Nota Baru" untuk memulai.</p>
+                `;
+            } else if (visibleCardCount === 0) {
+                noHistory.style.display = 'block';
+                noHistory.innerHTML = `
+                    <div class="empty-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="empty-title">Tidak ada hasil</h3>
+                    <p class="empty-text">Tidak ada nota yang cocok dengan kriteria filter/pencarian saat ini.</p>
+                `;
+            } else {
+                noHistory.style.display = 'none';
+            }
+        }
+
+        // =================================================================
+        //                 DOWNLOAD FUNCTION
+        // =================================================================
+        function setupDownloadButton() {
+            document.getElementById('downloadNotaBtn').addEventListener('click', () => {
+                const notaElement = document.getElementById('notaUntukDownload'); 
+                const copyButtons = notaElement.querySelectorAll('.copy-btn-small');
+                const countdownEl = document.getElementById('countdownContainer');
+
+                const originalCopyDisplay = [];
+                copyButtons.forEach(btn => {
+                    originalCopyDisplay.push(btn.style.display);
+                    btn.style.display = 'none';
+                });
+                
+                let originalBorderColor = '';
+                let originalTextColor = '';
+                let originalTextContent = '';
+
+                if (countdownEl && countdownEl.style.display !== 'none') {
+                    const countdownSection = countdownEl.querySelector('.receipt-countdown-section');
+                    originalBorderColor = countdownSection.style.borderColor;
+                    const countdownTextEl = document.getElementById('countdownText');
+                    originalTextColor = countdownTextEl.style.color;
+                    originalTextContent = countdownTextEl.textContent;
+                    
+                    let displayColor = '#00f7ff';
+                    if (originalTextContent === "WAKTU HABIS") {
+                        displayColor = '#ff2a9c'; 
+                    } else if (originalTextContent.includes('PAUSED')) {
+                        displayColor = '#ffd600'; 
+                    }
+                    
+                    countdownSection.style.borderColor = displayColor; 
+                    countdownTextEl.style.color = displayColor; 
+                }
+                
+                const logoElement = document.querySelector('.receipt-logo');
+                const originalLogoStyle = logoElement.style.cssText;
+                logoElement.style.cssText = 'color: #00f7ff !important; -webkit-text-fill-color: #00f7ff !important; background: none !important; -webkit-background-clip: initial !important; background-clip: initial !important; text-shadow: 0 0 20px rgba(0, 247, 255, 0.7) !important;';
+                
+                html2canvas(notaElement, {
+                    backgroundColor: '#0a0a12',
+                    scale: 3,
+                    useCORS: true,
+                    logging: false,
+                    allowTaint: true,
+                    removeContainer: true,
+                    width: notaElement.offsetWidth,
+                    height: notaElement.offsetHeight,
+                    onclone: function(clonedDoc) {
+                        const clonedLogo = clonedDoc.querySelector('.receipt-logo');
+                        if (clonedLogo) {
+                            clonedLogo.style.cssText = 'color: #00f7ff !important; -webkit-text-fill-color: #00f7ff !important; background: none !important; -webkit-background-clip: initial !important; background-clip: initial !important; text-shadow: 0 0 20px rgba(0, 247, 255, 0.7) !important;';
+                        }
+                        
+                        const clonedCopyButtons = clonedDoc.querySelectorAll('.copy-btn-small');
+                        clonedCopyButtons.forEach(btn => {
+                            btn.style.display = 'none';
+                        });
+                    }
+                }).then(canvas => {
+                    copyButtons.forEach((btn, index) => {
+                        btn.style.display = originalCopyDisplay[index];
+                    });
+                    
+                    if (countdownEl && countdownEl.style.display !== 'none') {
+                        const countdownSection = countdownEl.querySelector('.receipt-countdown-section');
+                        document.getElementById('countdownText').textContent = originalTextContent;
+                        countdownSection.style.borderColor = originalBorderColor;
+                        document.getElementById('countdownText').style.color = originalTextColor;
+                    }
+                    
+                    logoElement.style.cssText = originalLogoStyle;
+
+                    const link = document.createElement('a');
+                    link.download = `Nota_Joki_FishIt_${document.getElementById('notaNomorInvoice').textContent}.png`; 
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    
+                    showNotification('Nota berhasil diunduh!', 'success');
+                }).catch(error => {
+                    console.error('Download gagal:', error);
+                    
+                    copyButtons.forEach((btn, index) => {
+                        btn.style.display = originalCopyDisplay[index];
+                    });
+                    
+                    if (countdownEl && countdownEl.style.display !== 'none') {
+                        const countdownSection = countdownEl.querySelector('.receipt-countdown-section');
+                        document.getElementById('countdownText').textContent = originalTextContent;
+                        countdownSection.style.borderColor = originalBorderColor;
+                        document.getElementById('countdownText').style.color = originalTextColor;
+                    }
+                    
+                    logoElement.style.cssText = originalLogoStyle;
+                    
+                    showNotification('Gagal mengunduh nota. Silakan coba lagi.', 'error');
+                });
+            });
+        }
+
+        // =================================================================
+        //                 FUNGSI NOTIFIKASI
+        // =================================================================
+        function showNotification(message, type = 'info') {
+            const oldNotification = document.querySelector('.custom-notification');
+            if (oldNotification) {
+                oldNotification.remove();
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = `custom-notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-icon">
+                    ${type === 'success' ? '✓' : type === 'error' ? '✗' : type === 'warning' ? '⚠' : 'ⓘ'}
+                </div>
+                <div class="notification-message">${message}</div>
+            `;
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                .custom-notification {
+                    position: fixed;
+                    top: 30px;
+                    right: 30px;
+                    background: rgba(26, 26, 46, 0.95);
+                    border: 2px solid;
+                    border-radius: var(--radius-small);
+                    padding: 20px 25px;
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    z-index: 10000;
+                    backdrop-filter: blur(20px);
+                    -webkit-backdrop-filter: blur(20px);
+                    transform: translateX(150%);
+                    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+                    max-width: 400px;
+                    min-width: 300px;
+                }
+                
+                .custom-notification.success {
+                    border-color: rgba(0, 255, 136, 0.5);
+                    background: rgba(26, 46, 38, 0.95);
+                }
+                
+                .custom-notification.error {
+                    border-color: rgba(255, 42, 156, 0.5);
+                    background: rgba(46, 26, 38, 0.95);
+                }
+                
+                .custom-notification.warning {
+                    border-color: rgba(255, 214, 0, 0.5);
+                    background: rgba(46, 46, 26, 0.95);
+                }
+                
+                .custom-notification.info {
+                    border-color: rgba(0, 247, 255, 0.5);
+                    background: rgba(26, 38, 46, 0.95);
+                }
+                
+                .notification-icon {
+                    font-size: 1.8rem;
+                    font-weight: 900;
+                }
+                
+                .success .notification-icon { color: #00ff88; }
+                .error .notification-icon { color: #ff2a9c; }
+                .warning .notification-icon { color: #ffd600; }
+                .info .notification-icon { color: #00f7ff; }
+                
+                .notification-message {
+                    color: var(--text-light);
+                    font-size: 1rem;
+                    font-weight: 500;
+                    line-height: 1.5;
+                }
+                
+                .custom-notification.show {
+                    transform: translateX(0);
+                }
+            `;
+            
+            document.head.appendChild(style);
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                    if (style.parentNode) {
+                        style.remove();
+                    }
+                }, 500);
+            }, 5000);
+        }
+
+        // =================================================================
+        //                 OPTIMASI PERFORMA
+        // =================================================================
+        function optimizedAnimationUpdate() {
+            if (!document.hidden) {
+                updateEstimatedTimeDisplay();
+                requestAnimationFrame(optimizedAnimationUpdate);
+            }
+        }
+
+        // =================================================================
+        //                 INITIALIZATION
+        // =================================================================
+        window.onload = function() {
+            console.log("SH Store Nota Generator (Cyberpunk Edition): Berhasil dimuat.");
+            
+            createParticles();
+            
+            loadFormDataCache();
+            setupDownloadButton(); 
+            
+            document.getElementById('inputFormModal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('inputFormModal')) {
+                    closeInputFormModal();
+                }
+            });
+            document.getElementById('receiptModal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('receiptModal')) {
+                    closeReceiptModal();
+                }
+            });
+            document.getElementById('historyModal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('historyModal')) {
+                    closeHistoryModal();
+                }
+            });
+            
+            document.getElementById('historySearchInput').addEventListener('input', function() {
+                if (window.searchTimeout) {
+                    clearTimeout(window.searchTimeout);
+                }
+                
+                window.searchTimeout = setTimeout(() => {
+                    filterHistory();
+                }, 300);
+            });
+            
+            setTimeout(() => {
+                optimizedAnimationUpdate();
+            }, 2000);
+            
+            setTimeout(() => {
+                showNotification('Selamat datang di SH Store Nota Generator!', 'info');
+            }, 1000);
+        };
+    </script>
+
+</body>
+</html>
